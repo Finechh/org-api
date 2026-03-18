@@ -10,6 +10,13 @@ REST API for managing organizational structure — departments and employees.
 
 ---
 
+## Clone
+
+```bash
+git clone https://github.com/Finechh/org-api.git
+cd org-api
+```
+
 ## Run
 
 ```bash
@@ -43,27 +50,27 @@ go test ./internal/handler/... -cover
 
 ## Endpoints
 
-| Method | Path                           | Description                  |
-| ------ | ------------------------------ | ---------------------------- |
-| POST   | `/departments/`                | Create department            |
-| GET    | `/departments/{id}`            | Get department with tree     |
-| PATCH  | `/departments/{id}`            | Update name / parent         |
-| DELETE | `/departments/{id}`            | Delete (cascade or reassign) |
-| POST   | `/departments/{id}/employees/` | Add employee                 |
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/departments/` | Create department |
+| GET | `/departments/{id}` | Get department with tree |
+| PATCH | `/departments/{id}` | Update name / parent |
+| DELETE | `/departments/{id}` | Delete (cascade or reassign) |
+| POST | `/departments/{id}/employees/` | Add employee |
 
 ### GET query params
 
-| Param               | Type | Default | Description                         |
-| ------------------- | ---- | ------- | ----------------------------------- |
-| `depth`             | int  | 1       | Depth of nested departments (max 5) |
-| `include_employees` | bool | true    | Include employees in response       |
+| Param | Type | Default | Description |
+|-------|------|---------|-------------|
+| `depth` | int | 1 | Depth of nested departments (max 5) |
+| `include_employees` | bool | true | Include employees in response |
 
 ### DELETE query params
 
-| Param                       | Values                 | Description                                               |
-| --------------------------- | ---------------------- | --------------------------------------------------------- |
-| `mode`                      | `cascade` / `reassign` | Delete mode                                               |
-| `reassign_to_department_id` | int                    | Target department for employees (required for `reassign`) |
+| Param | Values | Description |
+|-------|--------|-------------|
+| `mode` | `cascade` / `reassign` | Delete mode |
+| `reassign_to_department_id` | int | Target department for employees (required for `reassign`) |
 
 ---
 
@@ -124,11 +131,11 @@ curl -X DELETE "http://localhost:8080/departments/2?mode=reassign&reassign_to_de
 
 ## Environment variables
 
-| Variable      | Default   | Description       |
-| ------------- | --------- | ----------------- |
-| `DB_HOST`     | localhost | PostgreSQL host   |
-| `DB_PORT`     | 5432      | PostgreSQL port   |
-| `DB_USER`     | postgres  | Database user     |
-| `DB_PASSWORD` | postgres  | Database password |
-| `DB_NAME`     | orgapi    | Database name     |
-| `SERVER_PORT` | 8080      | HTTP server port  |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DB_HOST` | localhost | PostgreSQL host |
+| `DB_PORT` | 5432 | PostgreSQL port |
+| `DB_USER` | postgres | Database user |
+| `DB_PASSWORD` | postgres | Database password |
+| `DB_NAME` | orgapi | Database name |
+| `SERVER_PORT` | 8080 | HTTP server port |
