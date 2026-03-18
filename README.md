@@ -21,7 +21,6 @@ API available at `http://localhost:8080`. Migrations apply automatically on star
 To reset the database:
 
 ```bash
-docker-compose down -v
 docker-compose up --build
 ```
 
