@@ -13,6 +13,7 @@ REST API for managing organizational structure — departments and employees.
 ## Run
 
 ```bash
+docker-compose down -v
 docker-compose up --build
 ```
 
